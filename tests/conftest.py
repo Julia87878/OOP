@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from src.category import Category
@@ -32,5 +34,16 @@ def second_category():
 
 
 @pytest.fixture
+def third_category():
+    return Category(name="Хлебобулочные изделия", description="батоны", products=[])
+
+
+@pytest.fixture
 def product():
     return Product("апельсины", "египетские", 30.2, 70)
+
+
+@pytest.fixture
+def path_name():
+    path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "products.json")
+    return path_to_file
