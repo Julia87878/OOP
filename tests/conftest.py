@@ -44,6 +44,16 @@ def product():
 
 
 @pytest.fixture
+def product_07():
+    return Product("кабачки", "молодые", 10.2, 80)
+
+
+@pytest.fixture
+def product_dict_first():
+    return {"name": "груши", "description": "Зимняя", "price": 30.5, "quantity": 70}
+
+
+@pytest.fixture
 def path_name():
     path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "products.json")
     return path_to_file
