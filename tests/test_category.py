@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category_init(first_category, second_category, third_category):
     assert first_category.name == "Овощи"
     assert first_category.description == "краснодарские"
@@ -34,3 +37,18 @@ def test_add_product(first_category, product_07):
         "морковь, 10.4 руб. Остаток: 25 шт.\nперец, 50.5 руб. Остаток: 35 шт.\n"
         "кабачки, 10.2 руб. Остаток: 80 шт.\n"
     )
+
+
+def test_category_str(second_category):
+    assert str(second_category) == "Фрукты, количество продуктов: 210 шт.\n"
+
+
+def test_product_iterator(product_iterator):
+    iter(product_iterator)
+    assert product_iterator.index == 0
+    assert next(product_iterator).name == "апельсины"
+    assert next(product_iterator).name == "мандарины"
+    assert next(product_iterator).name == "лимоны"
+
+    with pytest.raises(StopIteration):
+        next(product_iterator)

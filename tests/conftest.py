@@ -4,6 +4,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.productiterator import ProductIterator
 
 
 @pytest.fixture
@@ -57,3 +58,8 @@ def product_dict_first():
 def path_name():
     path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "products.json")
     return path_to_file
+
+
+@pytest.fixture
+def product_iterator(second_category):
+    return ProductIterator(second_category)
