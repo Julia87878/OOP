@@ -10,6 +10,16 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n"
+
+    def __add__(self, other):
+        if not isinstance(other, Product):
+            raise TypeError
+        else:
+            result = self.__price * self.quantity + other.price * other.quantity
+            return result
+
     @classmethod
     def new_product(cls, product_dict: dict):
         return cls(**product_dict)
